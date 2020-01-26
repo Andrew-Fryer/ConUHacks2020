@@ -25,7 +25,7 @@ export default function InputFactors(props) {
   };
 
   return (
-    <Container maxWidth='xs'>
+    <Container maxWidth='sm'>
       <Box p={3}>
         <Paper>
           <Box p={3}>

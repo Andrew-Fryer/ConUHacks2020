@@ -133,8 +133,7 @@ const useStyles = makeStyles({
   flex: {
     display: 'flex',
     flexWrap: 'wrap',
-    justifyContent: 'center',
-    alignContent: 'space-evenly',
+    alignContent: 'stretch',
   }, input: {
     padding: theme.spacing(2),
     aligntContent: 'center'
@@ -163,7 +162,7 @@ const simulate = (state, setResults) => {
   }
 
   // send to server to simulate
-  fetch("http://localhost:5000/", {
+  fetch(process.env.BACKEND_HOST || "http://localhost:5000/", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -210,6 +209,15 @@ export default function App() {
   const [results, setResults] = React.useState(undefined);
   const [results2, setResults2] = React.useState(undefined);
 
+  const inputData = {};
+  for(const factor of state) {
+    const inputs = {};
+    for(const input of factor.inputs) {
+      inputs[input.name] = input.value;
+    }
+    inputData[factor.header] = inputs;
+  }
+
   return (
     <>
       <CssBaseline />
@@ -241,7 +249,7 @@ export default function App() {
           })))} />
         </Box>
       <Box p={2}>
-        <Graph data={results} data2={results2} />
+        <Graph data={results} data2={results2} inputs={state}/>
       </Box>
     </>
   );
