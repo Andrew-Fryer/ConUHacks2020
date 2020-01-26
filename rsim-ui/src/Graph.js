@@ -17,10 +17,10 @@ const Results = props =>  {
     const d2__ = Derivative(d2_);
 
     const layout = [
-      {i: 'a', x: 0, y: 0, w: 2, h: 1, static: true},
-      {i: 'b', x: 0, y: 1, w: 2, h: 1, static: true},
-      {i: 'c', x: 0, y: 2, w: 2, h: 1, static: true},
-      {i: 'd', x: 0, y: 3, w: 1, h: 1, static: true}
+      {i: 'a', x: 0, y: 0, w: 3, h: 1, static: true},
+      {i: 'b', x: 0, y: 1, w: 3, h: 1, static: true},
+      {i: 'c', x: 0, y: 2, w: 3, h: 1, static: true},
+      {i: 'd', x: 1, y: 3, w: 1, h: 1.3, static: true}
     ];
 
     console.log(d1);
@@ -80,7 +80,7 @@ const Results = props =>  {
 
     return (
       <div>
-        {(d1 || d2) && <GridLayout className="layout" layout={layout} cols={2} rowHeight={300} width={window.innerWidth} height={window.innerHeight}>
+        {(d1 || d2) && <GridLayout className="layout" layout={layout} cols={3} rowHeight={300} width={window.innerWidth} height={window.innerHeight}>
           <div key="a" className="Results">
             <XYPlot
               className="plot"
@@ -127,7 +127,7 @@ const Results = props =>  {
               {name: 'maxAccel', domain: [0, 80], getValue: d => d.maxAccel},
               {name: 'maxVel', domain: [6.9, 1000], getValue: d => d.maxVel},
               {name: 'AvgAccel', domain: [0, 5], getValue: d => d.AvgAccel},
-              {name: 'AvgVel', domain: [0, 1], getValue: d => d.AvgVel},
+              {name: 'AvgVel', domain: [0, 0.002], getValue: d => d.AvgVel},
               {name: 'maxAlt', domain: [0, 3000], getValue: d => d.maxAlt},
               {name: 'massTot', domain: [0, 5], getValue: d => d.massTot}
             ]}
