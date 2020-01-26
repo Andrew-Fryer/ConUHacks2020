@@ -1,9 +1,3 @@
-{
-  "scripts": {
-    "start": "react-scripts start -p 80",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "postinstall": "cd rsim-backend && npm install"
-  }
+"scripts": {
+  "postinstall": "cd client && npm install"
 }
